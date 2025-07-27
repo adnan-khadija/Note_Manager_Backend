@@ -11,6 +11,14 @@ class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
+
+class EmailRequest(BaseModel):
+    email: EmailStr
+
+class PasswordResetRequest(BaseModel):
+    token: str
+    new_password: str
+
 class UserOut(BaseModel):
     id: int
     username: str

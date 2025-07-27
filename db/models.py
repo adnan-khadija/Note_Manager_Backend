@@ -26,8 +26,8 @@ class Note(Model):
     updated_at=fields.DatetimeField(auto_now=True)
     tags=fields.CharField(max_length=255, null=True,required=False)
     status=fields.CharField(max_length=255)
-    shared_with = fields.ManyToManyField("models.User", related_name="shared_notes", through="shared_notes", on_delete=fields.CASCADE ,required=False)
-    public_token = fields.CharField(max_length=100, null=True, unique=True,required=False)
+    shared_with = fields.ManyToManyField("models.User", related_name="shared_notes", through="shared_notes", on_delete=fields.CASCADE )
+    public_token = fields.CharField(max_length=100, null=True, unique=True)
 
     class Meta:
         table="notes"

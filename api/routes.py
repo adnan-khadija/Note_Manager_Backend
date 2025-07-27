@@ -92,13 +92,19 @@ async def get_note_by_id(note_id: int, current_user: User = Depends(get_current_
 
 @router.post("/notes/share")
 async def share_note(request: ShareNoteRequest, current_user: User = Depends(get_current_user)):
-    note = await Note.get_or_none(id=request.note_id, user=current_user)
+    note = await Note.get_or_none(id=request.note_id, user_id=current_user["id"])
     if not note:
         raise HTTPException(status_code=404, detail="Note not found")
+    if request.target_user_id == current_user["id"]:
+        raise HTTPException(status_code=400, detail="Impossible de partager avec soi-même")
+    # Vérifie si déjà partagé
+    existing = await SharedNote.get_or_none(note=note, user_id=request.target_user_id)
+    if existing:
+        raise HTTPException(status_code=400, detail="Déjà partagé avec cet utilisateur")
     note.status = "partagé"
     await note.save()
     await SharedNote.create(note=note, user_id=request.target_user_id)
-    return {"message": "Note shared"}
+    return {"message": "Note partagée"}
 
 # Get shared notes
 @router.get("/shared-notes", response_model=list[NoteOut])

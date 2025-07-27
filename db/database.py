@@ -1,4 +1,3 @@
-from tortoise import Tortoise 
 import os
 from dotenv import load_dotenv
 
