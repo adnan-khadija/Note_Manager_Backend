@@ -91,7 +91,7 @@ frontend/
 ```
 ## 🚀 Lancer le projet
 
-### 1. **Test en local (sans Docker)**
+### 1. **Test en local**
 
 #### **Backend**
 
@@ -100,8 +100,6 @@ cd backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-# Vérifie que le fichier .env contient :
-# DATABASE_URL=postgres://postgres:1234@localhost:5432/notesdb
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 
@@ -111,10 +109,7 @@ npm run dev
 # Accède à http://localhost:3000
 Backend (API docs) : http://localhost:8000/docs
 
-# Pour Docker
-DATABASE_URL=postgres://postgres:1234@db:5432/notesdb
-SERVER_HOST=0.0.0.0
-ACCESS_TOKEN_EXPIRE_MINUTES=40
+
 
 ## Auteur
 [Khadija ADNAN](https://github.com/adnan-khadija)
