@@ -3,7 +3,7 @@
 Application web de prise de notes avec partage, authentification et interface moderne (Next.js + FastAPI + PostgreSQL).
 Cette partie est backend:
 Vous pouvez consulter le code frontend ici :  
-[Fronted]([https://github.com/adnan-khadija/Note_Manager_Frontend)
+[Fronted](https://github.com/adnan-khadija/Note_Manager_Frontend)
 
 
 ---
